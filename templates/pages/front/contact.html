@@ -1,0 +1,199 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<div class="bg-warm-gray-50">
+    <div class="py-24 lg:py-32">
+        <div class="relative z-10 max-w-7xl mx-auto pl-4 pr-8 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl">Prendre
+                contact</h1>
+            <p class="mt-6 text-xl text-warm-gray-500 max-w-3xl">Formulaire disponible pour prendre contact,
+                sentez-vous libre de me contacter pour différentes raisons.</p>
+        </div>
+    </div>
+</div>
+
+<section class="relative bg-white" aria-labelledby="contact-heading">
+    <div class="absolute w-full h-1/2 bg-warm-gray-50" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <svg class="absolute z-0 top-0 right-0 transform -translate-y-16 translate-x-1/2 sm:translate-x-1/4 md:-translate-y-24 lg:-translate-y-72"
+            width="404" height="384" fill="none" viewBox="0 0 404 384" aria-hidden="true">
+            <defs>
+                <pattern id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d" x="0" y="0" width="20" height="20"
+                    patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" class="text-warm-gray-200" fill="currentColor" />
+                </pattern>
+            </defs>
+            <rect width="404" height="384" fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
+        </svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative bg-white shadow-xl">
+            <h2 id="contact-heading" class="sr-only">Envoyez-moi un message</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3">
+                <div
+                    class="relative overflow-hidden py-10 px-6 bg-gradient-to-b from-rose-600 via-rose-600 sm:px-10 xl:p-12">
+                    <div class="absolute inset-0 pointer-events-none sm:hidden" aria-hidden="true">
+                        <svg class="absolute inset-0 w-full h-full" width="343" height="388" viewBox="0 0 343 388"
+                            fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M-99 461.107L608.107-246l707.103 707.107-707.103 707.103L-99 461.107z"
+                                fill="url(#linear1)" fill-opacity=".1" />
+                            <defs>
+                                <linearGradient id="linear1" x1="254.553" y1="107.554" x2="961.66" y2="814.66"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fff"></stop>
+                                    <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hidden absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none sm:block lg:hidden"
+                        aria-hidden="true">
+                        <svg class="absolute inset-0 w-full h-full" width="359" height="339" viewBox="0 0 359 339"
+                            fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M-161 382.107L546.107-325l707.103 707.107-707.103 707.103L-161 382.107z"
+                                fill="url(#linear2)" fill-opacity=".1" />
+                            <defs>
+                                <linearGradient id="linear2" x1="192.553" y1="28.553" x2="899.66" y2="735.66"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fff"></stop>
+                                    <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hidden absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none lg:block"
+                        aria-hidden="true">
+                        <svg class="absolute inset-0 w-full h-full" width="160" height="678" viewBox="0 0 160 678"
+                            fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M-161 679.107L546.107-28l707.103 707.107-707.103 707.103L-161 679.107z"
+                                fill="url(#linear3)" fill-opacity=".1" />
+                            <defs>
+                                <linearGradient id="linear3" x1="192.553" y1="325.553" x2="899.66" y2="1032.66"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fff"></stop>
+                                    <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white">Coordonnées</h3>
+                    <p class="mt-6 text-base text-rose-50 max-w-3xl">Liste des réseaux sociaux sur lesquels vous
+                        pouvez me trouver, ainsi que les adresses de courriel pour me contacter. Vous pouvez
+                        également me joindre en utilisant le formulaire à droite. &rarr;</p>
+
+                    {% for contact in contacts %}
+                    <dl class="mt-8 space-y-6">
+                        <dt><span class="sr-only">Email</span></dt>
+                        <dd class="flex text-base text-rose-50">
+                            <svg class="flex-shrink-0 w-6 h-6 text-rose-200" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="ml-3">{{contact.email}}</span>
+                        </dd>
+                    </dl>
+                    {% endfor %}
+
+                    <ul role="list" class="mt-8 flex space-x-12">
+                        {% for media in social_media %}
+                        <li>
+                            <a class="text-rose-200 hover:text-rose-100" href="{{media.url}}">
+                                <span class="sr-only">{{media.name}}</span>
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="{{media.icon}}" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12">
+                    <h3 class="text-lg font-medium text-warm-gray-900">Envoyez-moi un message</h3>
+                    <form action="#" method="POST" class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                        {%csrf_token%}
+                        <div>
+                            <label for="first-name"
+                                class="block text-sm font-medium text-warm-gray-900">{{form.first_name.label_tag}}</label>
+                            <div class="mt-1">
+                                {{form.first_name}}
+                            </div>
+                        </div>
+                        <div>
+                            <label for="last-name"
+                                class="block text-sm font-medium text-warm-gray-900">{{form.last_name.label_tag}}</label>
+                            <div class="mt-1">
+                                {{form.last_name}}
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email"
+                                class="block text-sm font-medium text-warm-gray-900">{{form.email.label_tag}}</label>
+                            <div class="mt-1">
+                                {{form.email}}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between">
+                                <label for="phone"
+                                    class="block text-sm font-medium text-warm-gray-900">{{form.phone.label_tag}}</label>
+                                <span id="phone-optional" class="text-sm text-warm-gray-500">Optional</span>
+                            </div>
+                            <div class="mt-1">
+                                {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="subject"
+                                class="block text-sm font-medium text-warm-gray-900">{{form.subject.label_tag}}</label>
+                            <div class="mt-1">
+                                {{form.subject}}
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <div class="flex justify-between">
+                                <label for="message"
+                                    class="block text-sm font-medium text-warm-gray-900">{{form.message.label_tag}}</label>
+                                <span id="message-max" class="text-sm text-warm-gray-500">Max. 500
+                                    caractères</span>
+                            </div>
+                            <div class="mt-1">
+                                {{form.message}}
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2 sm:flex sm:justify-end">
+                            <button type="submit"
+                                class="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-rose-500 hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 sm:w-auto">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section aria-labelledby="offices-heading">
+    <div class="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <h2 id="offices-heading" class="text-3xl font-extrabold text-warm-gray-900">Localisation</h2>
+        <p class="mt-6 text-lg text-warm-gray-500 max-w-3xl">Liste des endroits où je suis présent la plupart du
+            temps, que ce soit à des fins professionnelles ou personnelles.</p>
+        <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {% for address in addresses %}
+            <div>
+                <h3 class="text-lg font-medium text-warm-gray-900">{{address.country}}</h3>
+                <p class="mt-2 text-base text-warm-gray-500">
+                    <span class="block">{{address.zip}}</span>
+
+                    <span class="block">{{address.city}}</span>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{%endblock%}
