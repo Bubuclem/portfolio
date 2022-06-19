@@ -8,13 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clément Burdeyron | {% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static 'ico/europe-96.ico' %}"/>
     {% tailwind_css %}
 </head>
 <body class="bg-white">
     <main>
         {% block content %}{% endblock %}
     </main>
+
+    {% if request.resolver_match.app_name == 'front' %}
     {% include "base/footer.html" %}
+    {% endif %}
 
     {{reCaptchaV2.captcha}}
 </body>

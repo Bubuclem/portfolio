@@ -14,6 +14,14 @@ class contactForm(ModelForm):
     class Meta:
         model = Message
         fields = ['first_name', 'last_name', 'email', 'phone', 'subject', 'message']
+        labels = {
+            'first_name': 'Prénom',
+            'last_name': 'Nom',
+            'email': 'Adresse email',
+            'phone': 'Téléphone',
+            'subject': 'Sujet',
+            'message': 'Message',
+        }
         widgets = {
             'first_name': TextInput(attrs={'class': INPUT_CLASS}),
             'last_name': TextInput(attrs={'class': INPUT_CLASS}),

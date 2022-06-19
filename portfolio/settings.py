@@ -25,13 +25,14 @@ SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ALLOWED_HOSTS
 
 # Application definition
 
 INSTALLED_APPS = [
     'front',
+    'back',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,4 +143,12 @@ TAILWIND_APP_NAME = 'theme'
 
 RECAPTCHA_PUBLIC_KEY = str(os.environ.get('RECAPTCHA_PUBLIC_KEY'))
 RECAPTCHA_PRIVATE_KEY = str(os.environ.get('RECAPTCHA_PRIVATE_KEY'))
-RECAPTCHA_DOMAIN = str(os.environ.get('RECAPTCHA_DOMAIN'))
+
+# Personnalisation de l’authentification
+# https://docs.djangoproject.com/fr/4.0/topics/auth/customizing/
+
+AUTH_USER_MODEL = 'back.User'
+
+# Page login
+# https://docs.djangoproject.com/fr/4.0/ref/settings/#login-url
+LOGIN_URL = '/dashboard/login/'
