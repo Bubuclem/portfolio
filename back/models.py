@@ -1,9 +1,8 @@
-from PIL import Image
-from django.db import models
+from django_resized import ResizedImageField
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    picture_profile = models.ImageField(upload_to='users/pictures/', blank=True, null=True)
+    picture_profile = ResizedImageField(size=[250, 250], crop=['middle', 'center'], force_format='PNG', upload_to='users/pictures/', blank=True, null=True)
     
     class Meta:
         verbose_name = 'Utilisateur'

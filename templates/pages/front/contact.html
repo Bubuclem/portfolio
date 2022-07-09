@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block content %}
 <div class="bg-warm-gray-50">
@@ -103,8 +103,8 @@
                         <li>
                             <a class="text-rose-200 hover:text-rose-100" href="{{media.url}}">
                                 <span class="sr-only">{{media.name}}</span>
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="{{media.icon}}" clip-rule="evenodd" />
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="{{media.icon.view_box}}" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="{{media.icon.path}}" clip-rule="evenodd" />
                                 </svg>
                             </a>
                         </li>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import SocialMedia, Tool, Address, Project, ContactMe, AboutMe, Stats, Newsletter, Message
+from .models import SocialMedia, Tool, Address, Project, ContactMe, AboutMe, Stats, Newsletter, Message, Icon
 
 admin.site.register(SocialMedia)
 
@@ -24,3 +24,11 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = ('email', 'subject', 'date_created')
 
 admin.site.register(Message,MessageAdmin)
+
+class IconAdmin(admin.ModelAdmin):
+    list_display = ('name', 'to_svg')
+    list_filter = ('name',)
+    search_fields = ('name',)
+    ordering = ('-name',)
+
+admin.site.register(Icon,IconAdmin)

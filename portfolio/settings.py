@@ -152,3 +152,16 @@ AUTH_USER_MODEL = 'back.User'
 # Page login
 # https://docs.djangoproject.com/fr/4.0/ref/settings/#login-url
 LOGIN_URL = '/dashboard/login/'
+
+# Protection contre le « Cross site request forgery »
+# https://docs.djangoproject.com/fr/4.0/ref/csrf/
+# &
+# Intergiciels (« middleware »)
+# https://docs.djangoproject.com/fr/4.0/ref/middleware/
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_SECONDS = 300000
+SECURE_HSTS_PRELOAD = False
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False

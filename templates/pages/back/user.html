@@ -1,6 +1,6 @@
 {% extends './menu.html' %}
 
-{% block title %}Dashboard | Profile{% endblock %}
+{% block title %}Dashboard | {{form.username.value}}{% endblock %}
 
 {% block dashboard %}
 
@@ -26,8 +26,8 @@
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                         <div class="flex items-center">
                             <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                {%if user.picture_profile%}
-                                <img src="{{user.picture_profile.url}}" alt="">
+                                {%if form.picture_profile.value%}
+                                <img src="{{form.picture_profile.value.url}}" alt="">
                                 {%else%}
                                 <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -67,6 +67,61 @@
                         {{form.email.label}}
                     </label>
                     {{form.email}}
+                </div>
+            </div>
+        </div>
+
+        <div class="divide-y divide-gray-200 pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+            <div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Permissions</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Permission de l'utilisateur</p>
+            </div>
+            <div class="space-y-6 sm:space-y-5 divide-y divide-gray-200">
+                <div class="pt-6 sm:pt-5">
+                    <div role="group" aria-labelledby="label-email">
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                            <div>
+                                <div class="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
+                                    id="label-email">By Email</div>
+                            </div>
+                            <div class="mt-4 sm:mt-0 sm:col-span-2">
+                                <div class="max-w-lg space-y-4">
+                                    <div class="relative flex items-start">
+                                        <div class="flex items-center h-5">
+                                            {{form.is_active}}
+                                        </div>
+                                        <div class="ml-3 text-sm">
+                                            <label for="comments" class="font-medium text-gray-700">{{form.is_active.label}}</label>
+                                            <p class="text-gray-500">{{form.is_active.help_text}}</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="relative flex items-start">
+                                            <div class="flex items-center h-5">
+                                                {{form.is_staff}}
+                                            </div>
+                                            <div class="ml-3 text-sm">
+                                                <label for="candidates"
+                                                    class="font-medium text-gray-700">{{form.is_staff.label}}</label>
+                                                <p class="text-gray-500">{{form.is_staff.help_text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="relative flex items-start">
+                                            <div class="flex items-center h-5">
+                                                {{form.is_superuser}}
+                                            </div>
+                                            <div class="ml-3 text-sm">
+                                                <label for="offers" class="font-medium text-gray-700">{{form.is_superuser.label}}</label>
+                                                <p class="text-gray-500">{{form.is_superuser.help_text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

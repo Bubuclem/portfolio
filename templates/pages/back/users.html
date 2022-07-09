@@ -1,4 +1,4 @@
-{% extends './index.html' %}
+{% extends './menu.html' %}
 
 {% block title %}Dashboard | Utilisateurs{% endblock %}
 
@@ -28,14 +28,14 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        {% for user in users %}
+                        {% for an_user in users %}
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
-                                        {%if user.picture_profile%}
-                                        <img class="object-cover h-10 w-10 rounded-full" src="{{user.get_picture_profile}}"
-                                            alt="Photo de {{user.first_name}} {{user.last_name}}">
+                                        {%if an_user.picture_profile%}
+                                        <img class="object-cover h-10 w-10 rounded-full" src="{{an_user.get_picture_profile}}"
+                                            alt="pic">
                                         {%else%}
                                         <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-300 mr-3 flex-shrink h-10 w-10 rounded-full" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -46,25 +46,25 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
-                                            {{user.first_name}} {{user.last_name}}
+                                            {{an_user.first_name}} {{an_user.last_name}}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                            {{user.email}}
+                                            {{an_user.email}}
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span
-                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Active
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {%if an_user.is_active%}bg-green-100 text-green-800{%else%}bg-red-100 text-red-800{%endif%}">
+                                    {%if an_user.is_active%}Actif{%else%}Inactif{%endif%}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {% if user.is_staff %}Admin{%else%}User{%endif%}
+                                {% if an_user.is_staff %}Administrateur{%else%}Utilisateur{%endif%}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" class="text-red-600 hover:text-red-900">Edit</a>
+                                <a href="{%url 'back:user' an_user.id%}" class="text-red-600 hover:text-red-900">Edit</a>
                             </td>
                         </tr>
                         {% endfor %}

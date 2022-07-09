@@ -1,4 +1,4 @@
-{% extends './index.html' %}
+{% extends './menu.html' %}
 
 {% block title %}Dashboard | Messages{% endblock %}
 
@@ -48,7 +48,7 @@
                                 {{message.phone}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{% url 'back:message' message.id %} " class="text-red-600 hover:text-red-900">Lire</a>
+                                <a href="{% url 'back:message' message.id %}" class="text-red-600 hover:text-red-900">Lire</a>
                             </td>
                         </tr>
                         {% endfor %}

@@ -1,126 +1,111 @@
-{% extends 'base/base.html' %}
+{% extends './menu.html' %}
 {% load static %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Accueil{% endblock %}
 
-{% block content %}
-<div class="h-screen flex overflow-hidden bg-gray-100">
-    <div class="hidden md:flex md:flex-shrink-0">
-        <div class="flex flex-col w-64">
-            <div class="flex-1 flex flex-col min-h-0 bg-gray-800">
-                <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                    <div class="flex items-center flex-shrink-0 px-4">
-                        <img class="h-8 w-auto" src="{% static 'ico/europe-96.ico' %}" alt="Logo">
-                    </div>
-                    <nav class="mt-5 flex-1 px-2 bg-gray-800 space-y-1">
-                        {% url 'back:index' as url %}
-                        <a href="{% url 'back:index' %}"
-                            class="{% if request.path == url %}bg-gray-900 text-white{%else%}text-gray-300{%endif%} hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                            <svg class="text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                            Page principale
-                        </a>
+{% block dashboard %}
 
-                        {% url 'back:users' as url %}
-                        <a href="{% url 'back:users' %}"
-                            class="{% if request.path == url %}bg-gray-900 text-white{%else%}text-gray-300{%endif%} hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                            <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            Utilisateurs
-                        </a>
-
-                        {% url 'back:newsletters' as url %}
-                        <a href="{% url 'back:newsletters' %}"
-                            class="{% if request.path == url %}bg-gray-900 text-white{%else%}text-gray-300{%endif%} hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                            <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                            </svg>
-                            Newsletters
-                        </a>
-
-                        {% url 'back:messages' as url %}
-                        <a href="{% url 'back:messages' %}"
-                            class="{% if request.path == url %}bg-gray-900 text-white{%else%}text-gray-300{%endif%} hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                            <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                            </svg>
-                            Messages
-                        </a>
-                    </nav>
-                </div>
-                <div class="flex-shrink-0 flex bg-gray-700 p-4">
-                    <a href="{% url 'back:profile' %}" class="flex-shrink-0 w-full group block">
-                        <div class="flex items-center">
-                            <div>
-                                <img class="inline-block h-9 w-9 rounded-full"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="">
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm font-medium text-white">
-                                    {{user.username}}
-                                </p>
-                                <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                                    View profile
-                                </p>
-                            </div>
+<div class="flex items-center">
+    <img class="hidden h-16 w-16 rounded-full sm:block" src="{{user.picture_profile.url}}" alt="{{user.username}}">
+    <div>
+        <div class="flex items-center">
+            <img class="h-16 w-16 rounded-full sm:hidden" src="{{user.picture_profile.url}}" alt="{{user.username}}">
+            <h1 class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                {%if datetime.hour <= 18%}Bonjour{%else%}Bonsoir{%endif%}, {{user.first_name}} {{user.last_name}}</h1>
+        </div>
+        <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+            <dt class="sr-only">Courriel</dt>
+            <dd class="flex items-center text-sm text-gray-500 font-medium sm:mr-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+                {{user.email}}
+            </dd>
+            <dt class="sr-only">Compte statut</dt>
+            <dd class="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
+                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd" />
+                </svg>
+                Compte activé
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="mt-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-lg leading-6 font-medium text-gray-900">Derniers messages</h2>
+        <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {%if messages%}
+            {% for message in messages %}
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">{{message.first_name}}
+                                    {{message.last_name}}</dt>
+                                <dd>
+                                    <div class="text-lg font-medium text-gray-900">{{message.subject}}</div>
+                                </dd>
+                            </dl>
                         </div>
-                    </a>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-5 py-3">
+                    <div class="text-sm">
+                        <a href="{% url 'back:message' message.id %}"
+                            class="font-medium text-red-700 hover:text-red-900"> Lire </a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
+            {%else%}
+            <p class="text-red-400 text-sm">C'est calme, bien trop calme ...</p>
+            {% endif %}
         </div>
     </div>
-    <div class="flex flex-col w-0 flex-1 overflow-hidden">
-        <div class="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
-            <button type="button"
-                class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-        <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
+    <h2 class="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">Abonnements
+        récents
+    </h2>
 
-            <div class="p-2">
-                <div class="relative bg-red-500 rounded-md">
-                    <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-                        <div class="pr-16 sm:text-center sm:px-16">
-                            <p class="font-medium text-white">
-                                <span class="inline">
-                                    Site d'administration.
-                                </span>
-                                <span class="block sm:ml-2 sm:inline-block">
-                                    <a href="{%url 'front:index'%}" class="text-white font-bold underline">Retour au site vitrine
-                                        <span aria-hidden="true">→</span></a>
-                                </span>
-                            </p>
-                        </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col mt-2">
+            {%if newsletters%}
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Email
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for newsletter in newsletters %}
+                                <tr class="bg-white">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{newsletter.email}}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
 
-            <div class="py-6">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-
-                    {% block dashboard %}{% endblock %}
-                </div>
+                {%else%}
+                <p class="text-red-400 text-sm">Aucune inscription récente ...</p>
+                {% endif %}
             </div>
-        </main>
+        </div>
     </div>
 </div>
 

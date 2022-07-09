@@ -103,4 +103,4 @@ View 500
 Return 500 page if server error
 '''
 def server_error(request):
-    return render(request, 'pages/front/500.html', status=500)
+    return render(request, 'errors/500.html', status=500)

@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 
-from .views import IndexPageView, UsersPageView, MessagePageView, MessagesPageView, NewsletterPageView, ProfilePageView, LoginPageView
+from .views import IndexPageView, UsersPageView, UserPageView, MessagePageView, MessagesPageView, NewsletterPageView, ProfilePageView, LoginPageView
 
 app_name = 'back'
 urlpatterns = [
@@ -9,9 +9,13 @@ urlpatterns = [
     login_required(IndexPageView.as_view()), 
     name='index'),
 
-    path('users/',
+    path('utilisateurs/',
     login_required(UsersPageView.as_view()),
     name='users'),
+
+    path('utilisateur/<int:pk>/',
+    login_required(UserPageView.as_view()),
+    name='user'),
 
     path('newsletters/',
     login_required(NewsletterPageView.as_view()),

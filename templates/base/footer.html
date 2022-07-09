@@ -23,9 +23,9 @@
             {% for media in social_media %}
             <a href="{{media.url}}" class="text-gray-400 hover:text-gray-300">
                 <span class="sr-only">{{media.name}}</span>
-                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="{{media.icon.view_box}}" aria-hidden="true">
                     <path fill-rule="evenodd"
-                        d="{{media.icon}}"
+                        d="{{media.icon.path}}"
                         clip-rule="evenodd" />
                 </svg>
             </a>
