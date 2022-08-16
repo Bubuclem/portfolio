@@ -103,7 +103,8 @@
                         <li>
                             <a class="text-rose-200 hover:text-rose-100" href="{{media.url}}">
                                 <span class="sr-only">{{media.name}}</span>
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="{{media.icon.view_box}}" aria-hidden="true">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="{{media.icon.view_box}}"
+                                    aria-hidden="true">
                                     <path fill-rule="evenodd" d="{{media.icon.path}}" clip-rule="evenodd" />
                                 </svg>
                             </a>
@@ -165,10 +166,15 @@
                                 {{form.message}}
                             </div>
                         </div>
+
+                        <div class="sm:col-span-2 sm:flex sm:justify-end">
+                            {{form.captcha}}
+                        </div>
+
                         <div class="sm:col-span-2 sm:flex sm:justify-end">
                             <button type="submit"
                                 class="mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-rose-500 hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 sm:w-auto">
-                                Submit
+                                Envoyer
                             </button>
                         </div>
                     </form>

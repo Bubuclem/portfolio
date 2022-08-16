@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
 from django.views.generic.base import TemplateView 
 
-from .models import SocialMedia, Tool, Address, ContactMe, AboutMe, Newsletter, Message
-from .forms import contactForm, newsletterForm, reCAPTCHAV2Form
+from front.models import SocialMedia, Tool, Address, ContactMe, AboutMe, Newsletter, Message
+from front.forms import contactForm, newsletterForm
 
 class BaseView(TemplateView):
     ''' 
@@ -12,7 +12,6 @@ class BaseView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['social_media'] = SocialMedia.objects.all()
-        context['reCaptchaV2'] = reCAPTCHAV2Form()
         return context
 
 class IndexPageView(BaseView):
