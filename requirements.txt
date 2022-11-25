@@ -4,3 +4,4 @@ django-recaptcha==3.0.0
 django-tailwind==3.4.0
 django-browser-reload==1.6.0
 django-configurations==2.4
+django-resized==1.0.1
