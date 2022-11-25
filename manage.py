@@ -7,8 +7,12 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolio.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolio.github')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolio.production')
+    os.environ.setdefault('DJANGO_CONFIGURATION', 'Github')
+    os.environ.setdefault('DJANGO_CONFIGURATION', 'Production')
     try:
-        from django.core.management import execute_from_command_line
+        from configurations.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "

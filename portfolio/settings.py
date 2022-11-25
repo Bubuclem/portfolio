@@ -9,164 +9,139 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import environ
 import os
 from pathlib import Path
+from configurations import Configuration
 
-env = environ.Env()
+class Base(Configuration):
+    BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+    # Application definition
+    INSTALLED_APPS = [
+        'front',
+        'back',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'captcha',
+        'tailwind',
+        'theme',
+        'django_browser_reload'
+    ]
 
-# Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'django_browser_reload.middleware.BrowserReloadMiddleware',
+    ]
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+    ROOT_URLCONF = 'portfolio.urls'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
-INTERNAL_IPS = ALLOWED_HOSTS
-
-# Application definition
-
-INSTALLED_APPS = [
-    'front',
-    'back',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'captcha',
-    'tailwind',
-    'theme',
-    'django_browser_reload'
-]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
-]
-
-ROOT_URLCONF = 'portfolio.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [os.path.join(BASE_DIR, 'templates')],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
         },
-    },
-]
+    ]
 
-WSGI_APPLICATION = 'portfolio.wsgi.application'
+    WSGI_APPLICATION = 'portfolio.wsgi.application'
 
+    # Database
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
 
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+    # Password validation
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
-
-LANGUAGE_CODE = 'fr'
-
-TIME_ZONE = 'Europe/Paris'
-
-USE_I18N = True
-
-USE_TZ = True
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ]
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
+    # Internationalization
+    # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_DIRS = [
-    BASE_DIR / 'static',
-]
+    LANGUAGE_CODE = 'fr'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+    TIME_ZONE = 'Europe/Paris'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+    USE_I18N = True
 
-# Tailwind CSS
-# https://django-tailwind.readthedocs.io/en/latest/installation.html
+    USE_TZ = True
 
-TAILWIND_APP_NAME = 'theme'
 
-# Django reCAPTCHA
-# https://github.com/torchbox/django-recaptcha
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
+    STATIC_URL = 'static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_DIRS = [
+        BASE_DIR / 'static',
+    ]
 
-# Personnalisation de l’authentification
-# https://docs.djangoproject.com/fr/4.0/topics/auth/customizing/
+    # Default primary key field type
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-AUTH_USER_MODEL = 'back.User'
+    DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Page login
-# https://docs.djangoproject.com/fr/4.0/ref/settings/#login-url
-LOGIN_URL = '/dashboard/login/'
+    # Tailwind CSS
+    # https://django-tailwind.readthedocs.io/en/latest/installation.html
 
-# Protection contre le « Cross site request forgery »
-# https://docs.djangoproject.com/fr/4.0/ref/csrf/
-# &
-# Intergiciels (« middleware »)
-# https://docs.djangoproject.com/fr/4.0/ref/middleware/
+    TAILWIND_APP_NAME = 'theme'
 
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
-SECURE_SSL_REDIRECT = False
-SECURE_HSTS_SECONDS = 300000
-SECURE_HSTS_PRELOAD = False
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    # Personnalisation de l’authentification
+    # https://docs.djangoproject.com/fr/4.0/topics/auth/customizing/
+
+    AUTH_USER_MODEL = 'back.User'
+
+    # Page login
+    # https://docs.djangoproject.com/fr/4.0/ref/settings/#login-url
+    LOGIN_URL = '/dashboard/login/'
+
+    # Protection contre le « Cross site request forgery »
+    # https://docs.djangoproject.com/fr/4.0/ref/csrf/
+    # &
+    # Intergiciels (« middleware »)
+    # https://docs.djangoproject.com/fr/4.0/ref/middleware/
+
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    SECURE_SSL_REDIRECT = False
+    SECURE_HSTS_SECONDS = 300000
+    SECURE_HSTS_PRELOAD = False
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
