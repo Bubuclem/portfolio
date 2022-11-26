@@ -24,3 +24,16 @@ class Production(Base):
     RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
     RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
     RECAPTCHA_REQUIRED_SCORE = 0.85
+
+    # Protection contre le « Cross site request forgery »
+    # https://docs.djangoproject.com/fr/4.0/ref/csrf/
+    # &
+    # Intergiciels (« middleware »)
+    # https://docs.djangoproject.com/fr/4.0/ref/middleware/
+
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 300000
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
