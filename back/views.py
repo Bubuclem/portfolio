@@ -9,7 +9,6 @@ from back.models import User
 from front.models import Message, Newsletter
 
 BASE_TEMPLATE = 'pages/back/{page}.html'
-SUCCESS_URL = '/dashboard/{page}'
 
 class LoginRequired(LoginRequiredMixin):
     login_url = '/login'
@@ -23,6 +22,7 @@ class IndexPageView(LoginRequired, TemplateView):
     Index Page 
     '''
     template_name = BASE_TEMPLATE.format(page='index')
+    success_url = 'back:index'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -39,6 +39,7 @@ class UsersPageView(LoginRequired, ListView):
     model = User
     paginate_by = 10
     context_object_name = 'users'
+    success_url = 'back:users'
 
     def get_queryset(self):
         return User.objects.all().order_by('first_name')
@@ -49,7 +50,7 @@ class UserPageView(LoginRequired, FormView):
     '''
     template_name = BASE_TEMPLATE.format(page='user')
     form_class = UserForm
-    success_url = SUCCESS_URL.format(page='users/')
+    success_url = 'back:user'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -72,6 +73,7 @@ class NewsletterPageView(LoginRequired, ListView):
     model = Newsletter
     paginate_by = 10
     context_object_name = 'newsletters'
+    success_url = 'back:newsletters'
 
     def get_queryset(self):
         return Newsletter.objects.all().order_by('email')
@@ -82,6 +84,7 @@ class MessagePageView(LoginRequired, TemplateView):
     Get messages from database
     '''
     template_name = BASE_TEMPLATE.format(page='message')
+    success_url = 'back:message'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -95,6 +98,7 @@ class MessagesPageView(LoginRequired, ListView):
     model = Message
     paginate_by = 10
     context_object_name = 'messages'
+    success_url = 'back:messages'
 
     def get_queryset(self):
         return Message.objects.all().order_by('-date_created')
@@ -105,7 +109,7 @@ class ProfilePageView(LoginRequired, FormView):
     '''
     template_name = BASE_TEMPLATE.format(page='profile')
     form_class = ProfilForm
-    success_url = SUCCESS_URL.format(page='profile')
+    success_url = 'back:profile'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -125,7 +129,9 @@ class LoginPageView(FormView):
     '''Sign in page'''
     template_name = BASE_TEMPLATE.format(page='login')
     form_class = LoginForm
-    success_url = SUCCESS_URL
+
+    def get_success_url(self):
+        return self.request.GET.get('redirect_to')
 
     def form_valid(self, form):
         user = User.objects.get(email=form.cleaned_data['email'])
