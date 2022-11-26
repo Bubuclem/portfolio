@@ -1,7 +1,8 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 
-from .views import IndexPageView, UsersPageView, UserPageView, MessagePageView, MessagesPageView, NewsletterPageView, ProfilePageView, LoginPageView
+from .views import ( IndexPageView, UsersPageView, UserPageView, MessagePageView, MessagesPageView, 
+NewsletterPageView, ProfilePageView, LoginPageView, LogoutPageView )
 
 app_name = 'back'
 urlpatterns = [
@@ -36,4 +37,8 @@ urlpatterns = [
     path('login/',
     LoginPageView.as_view(),
     name='login'),
+
+    path('logout/',
+    LogoutPageView.as_view(),
+    name='logout'),
 ]
