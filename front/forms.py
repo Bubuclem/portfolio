@@ -1,6 +1,6 @@
-from django import forms
 from django.forms import ModelForm, EmailInput, TextInput, Textarea
 from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 
 from .models import Newsletter, Message
 
@@ -10,7 +10,7 @@ EMAIL_CLASS = 'block w-full border border-transparent rounded-md px-5 py-3 text-
 
 ''' Form for contact '''
 class contactForm(ModelForm):
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
     class Meta:
         model = Message
         fields = ['first_name', 'last_name', 'email', 'phone', 'subject', 'message']
@@ -33,6 +33,7 @@ class contactForm(ModelForm):
 
 ''' Form for newsletter '''
 class newsletterForm(ModelForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
     class Meta :
         model = Newsletter
         fields = ['email']
