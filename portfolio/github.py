@@ -3,7 +3,7 @@ from portfolio.settings import Base
 class Github(Base):
     DEBUG = True
 
-    ALLOWED_HOSTS = ['localhost', 'github.dev']
+    ALLOWED_HOSTS = ['localhost', 'github.dev', '127.0.0.1']
     INTERNAL_IPS = ALLOWED_HOSTS
 
     SECRET_KEY='topsecretvalue'
