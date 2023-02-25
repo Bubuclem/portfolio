@@ -29,8 +29,6 @@ class Base(Configuration):
     ]
 
     CREATED_APPS = [
-        'front',
-        'back',
         'profil',
     ]
 
@@ -138,8 +136,8 @@ class Base(Configuration):
     # Personnalisation de l’authentification
     # https://docs.djangoproject.com/fr/4.0/topics/auth/customizing/
 
-    AUTH_USER_MODEL = 'back.User'
+    # AUTH_USER_MODEL = 'back.User'
 
     # Page login
     # https://docs.djangoproject.com/fr/4.0/ref/settings/#login-url
-    LOGIN_URL = '/dashboard/login/'
+    # LOGIN_URL = '/dashboard/login/'
