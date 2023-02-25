@@ -3,7 +3,7 @@ Admin panel for profil app
 '''
 from django.contrib import admin
 
-from profil.models import Work, Education, Project
+from profil.models import Work, Education, Project, CategorieUse, Use, About
 
 class WorkAdmin(admin.ModelAdmin):
     '''
@@ -32,6 +32,33 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description', 'url', 'order')
     ordering = ('order',)
 
+class CategorieUseAdmin(admin.ModelAdmin):
+    '''
+    Class of categorie use admin
+    '''
+    list_display = ('name', 'order')
+    list_filter = ('name', 'order')
+    search_fields = ('name', 'order')
+    ordering = ('order',)
+
+class UseAdmin(admin.ModelAdmin):
+    '''
+    Class of use admin
+    '''
+    list_display = ('name', 'categorie', 'order')
+    list_filter = ('name', 'categorie', 'order')
+    search_fields = ('name', 'categorie', 'order')
+    ordering = ('order',)
+
+class AboutAdmin(admin.ModelAdmin):
+    '''
+    Class of about admin
+    '''
+    list_display = ('description',)
+
 admin.site.register(Work, WorkAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(CategorieUse, CategorieUseAdmin)
+admin.site.register(Use, UseAdmin)
+admin.site.register(About, AboutAdmin)
