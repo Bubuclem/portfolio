@@ -31,6 +31,7 @@ class Base(Configuration):
     CREATED_APPS = [
         'front',
         'back',
+        'profil',
     ]
 
     THIRD_PARTY_APPS = [
