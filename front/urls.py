@@ -1,6 +1,9 @@
+'''
+Urls for the front app
+'''
 from django.urls import path
 
-from .views import IndexPageView, AboutPageView, ContactPageView, ToolsPageView
+from front.views import IndexPageView, AboutPageView, ContactPageView, ToolsPageView
 
 app_name = 'front'
 urlpatterns = [
