@@ -1,13 +1,16 @@
+'''
+Urls for the back app
+'''
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 
-from .views import ( IndexPageView, UsersPageView, UserPageView, MessagePageView, MessagesPageView, 
+from .views import ( IndexPageView, UsersPageView, UserPageView, MessagePageView, MessagesPageView,
 NewsletterPageView, ProfilePageView, LoginPageView, LogoutPageView )
 
 app_name = 'back'
 urlpatterns = [
-    path('', 
-    login_required(IndexPageView.as_view()), 
+    path('',
+    login_required(IndexPageView.as_view()),
     name='index'),
 
     path('utilisateurs/',
