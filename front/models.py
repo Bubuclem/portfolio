@@ -1,7 +1,13 @@
+'''
+Models of the front application
+'''
 from django.db import models
 from django.utils.html import mark_safe
 
-MARK_SAFE_SVG = '<svg style="color:white;" width="25px" height="25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="{view_box}" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{path}" /></svg>'
+MARK_SAFE_SVG = ('<svg style="color:white;" width="25px" height="25px" '
+'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="{view_box}" stroke="currentColor"'
+'aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" '
+'stroke-width="2" d="{path}" /></svg>')
 
 class Icon(models.Model):
     '''
@@ -10,7 +16,7 @@ class Icon(models.Model):
     name = models.CharField(max_length=100)
     path = models.TextField()
     view_box = models.CharField(max_length=20, default='0 0 24 24', blank=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -29,7 +35,11 @@ class SocialMedia(models.Model):
     icon = models.ForeignKey(Icon, on_delete=models.CASCADE)
     order = models.IntegerField()
     class Meta:
+        '''
+        Meta class for SocialMedia
+        '''
         ordering = ['order']
+
     def __str__(self):
         return self.name
 
@@ -43,7 +53,11 @@ class Tool(models.Model):
     icon = models.URLField()
     order = models.IntegerField()
     class Meta:
+        '''
+        Meta class for Tool
+        '''
         ordering = ['order']
+
     def __str__(self):
         return self.name
 
@@ -57,6 +71,9 @@ class Address(models.Model):
     zip = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     class Meta:
+        '''
+        Meta class for Address
+        '''
         verbose_name = 'Address'
         verbose_name_plural = 'Addresses'
         ordering = ['country']
@@ -77,6 +94,9 @@ class Project(models.Model):
     tools = models.ManyToManyField(Tool)
     social_media = models.ManyToManyField(Icon)
     class Meta:
+        '''
+        Meta class for Project
+        '''
         verbose_name_plural = 'Project'
         verbose_name_plural = 'Projects'
         ordering = ['name']
@@ -90,6 +110,9 @@ class ContactMe(models.Model):
     '''
     email = models.EmailField()
     class Meta:
+        '''
+        Meta class for ContactMe
+        '''
         verbose_name = 'Contact me'
         verbose_name_plural = 'Contact me'
         ordering = ['email']
@@ -105,6 +128,9 @@ class AboutMe(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='images/')
     class Meta:
+        '''
+        Meta class for AboutMe
+        '''
         verbose_name = 'About me'
         verbose_name_plural = 'About me'
         ordering = ['name']
@@ -119,6 +145,9 @@ class Stats(models.Model):
     name = models.CharField(max_length=255)
     value = models.IntegerField()
     class Meta:
+        '''
+        Meta class for Stats
+        '''
         verbose_name = 'Stat'
         verbose_name_plural = 'Stats'
         ordering = ['name']
@@ -133,6 +162,9 @@ class Newsletter(models.Model):
     email = models.EmailField()
     date_created = models.DateTimeField(auto_now_add=True)
     class Meta:
+        '''
+        Meta class for Newsletter
+        '''
         verbose_name = 'Newsletter'
         verbose_name_plural = 'Newsletters'
         ordering = ['email']
@@ -152,6 +184,9 @@ class Message(models.Model):
     message = models.TextField(max_length=500)
     date_created = models.DateTimeField(auto_now_add=True)
     class Meta:
+        '''
+        Meta class for Message
+        '''
         verbose_name = 'Message'
         verbose_name_plural = 'Messages'
         ordering = ['last_name']
