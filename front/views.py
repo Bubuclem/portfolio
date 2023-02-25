@@ -5,8 +5,7 @@ from django.shortcuts import redirect, render
 from django.views.generic.base import TemplateView
 
 from front.models import SocialMedia, Tool, Address, ContactMe, AboutMe, Newsletter, Message
-from front.forms import contactForm, newsletterForm
-
+from front.forms import ContactForm, NewsletterForm
 
 class BaseView(TemplateView):
     ''' 
@@ -19,7 +18,6 @@ class BaseView(TemplateView):
         context['social_media'] = SocialMedia.objects.all()
         return context
 
-
 class IndexPageView(BaseView):
     ''' 
     Index Page
@@ -31,22 +29,20 @@ class IndexPageView(BaseView):
         context = super().get_context_data(**kwargs)
         context['tools'] = Tool.objects.order_by('order')[:4]
         context['about_me'] = AboutMe.objects.first()
-        context['newsletter'] = newsletterForm()
+        context['newsletter'] = NewsletterForm()
         return context
 
-    ''' 
-    Post the newsletter
-    Check if the email exist in database
-    '''
-
     def post(self, request, *args, **kwargs):
-        form = newsletterForm(request.POST)
+        ''' 
+        Post the newsletter
+        Check if the email exist in database
+        '''
+        form = NewsletterForm(self.request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             if Newsletter.objects.filter(email=email).exists() is False:
                 form.save()
         return redirect('/')
-
 
 class ToolsPageView(BaseView):
     ''' 
@@ -60,7 +56,6 @@ class ToolsPageView(BaseView):
         context['tools'] = Tool.objects.all()
         return context
 
-
 class AboutPageView(BaseView):
     ''' 
     About Page
@@ -69,9 +64,8 @@ class AboutPageView(BaseView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['newsletter'] = newsletterForm()
+        context['newsletter'] = NewsletterForm()
         return context
-
 
 class ContactPageView(BaseView):
     ''' 
@@ -83,7 +77,7 @@ class ContactPageView(BaseView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['addresses'] = Address.objects.all()
-        context['form'] = contactForm()
+        context['form'] = ContactForm()
         context['contacts'] = ContactMe.objects.all()
         return context
 
@@ -93,7 +87,7 @@ class ContactPageView(BaseView):
         Check how many messsages about this email have been sent
         if he has sent 5 messages, return error message
         '''
-        form = contactForm(request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             if Message.objects.filter(email=email).count() >= 5:
