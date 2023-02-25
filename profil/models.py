@@ -100,3 +100,19 @@ class Use(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class About(models.Model):
+    '''
+    Class of about
+    '''
+    description = models.TextField(blank=True, null=True)
+    contact = models.CharField(max_length=255, blank=True, null=True)
+    class Meta:
+        '''
+        Meta class for About
+        '''
+        verbose_name = 'About'
+        verbose_name_plural = 'Abouts'
+
+    def __str__(self):
+        return str(self.description)
