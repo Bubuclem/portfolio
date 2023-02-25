@@ -3,13 +3,14 @@ Views for back app
 '''
 from datetime import datetime
 from django.urls import reverse
-from django.views.generic import TemplateView, ListView, FormView
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import authenticate, login, logout
+from django.views.generic import TemplateView, ListView, FormView
 
-from back.forms import LoginForm, ProfilForm, UserForm
 from back.models import User
 from front.models import Message, Newsletter
+from back.forms import ProfilForm, UserForm
 
 BASE_TEMPLATE = 'pages/back/{page}.html'
 
@@ -17,11 +18,8 @@ class LoginRequired(LoginRequiredMixin):
     '''
     Login required mixin
     '''
-    login_url = '/login'
+    login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
-
-    def get_login_url(self) -> str:
-        return reverse('back:login')
 
 class IndexPageView(LoginRequired, TemplateView):
     ''' 
@@ -132,22 +130,12 @@ class ProfilePageView(LoginRequired, FormView):
         context = self.form_invalid(form)
         return context
 
-class LoginPageView(FormView):
-    '''Sign in page'''
-    template_name = BASE_TEMPLATE.format(page='login')
-    form_class = LoginForm
-
-    def get_success_url(self):
-        return self.request.GET.get('redirect_to')
-
-    def form_valid(self, form):
-        user = User.objects.get(email=form.cleaned_data['email'])
-        user = authenticate(username=user.username, password=form.cleaned_data['password'])
-        if user is not None:
-            login(self.request, user)
-            return super().form_valid(form)
-        else:
-            return self.form_invalid(form)
+class LoginPageView(AuthenticationForm, TemplateView):
+    '''
+    Login page
+    '''
+    template_name = 'registration/login.html'
+    form_class = AuthenticationForm
 
 class LogoutPageView(TemplateView):
     '''Logout page'''
