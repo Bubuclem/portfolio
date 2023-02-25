@@ -14,23 +14,33 @@ from pathlib import Path
 from configurations import Configuration
 
 class Base(Configuration):
+    '''
+    Base settings to build other settings files upon.
+    '''
     BASE_DIR = Path(__file__).resolve().parent.parent
 
-    # Application definition
-    INSTALLED_APPS = [
-        'front',
-        'back',
+    DEFAULT_APPS = [
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+    ]
+
+    CREATED_APPS = [
+        'front',
+        'back',
+    ]
+
+    THIRD_PARTY_APPS = [
         'captcha',
         'tailwind',
         'theme',
         'django_browser_reload'
     ]
+
+    INSTALLED_APPS = [*DEFAULT_APPS, *CREATED_APPS, *THIRD_PARTY_APPS]
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
