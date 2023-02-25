@@ -1,3 +1,6 @@
+'''
+Views for back app
+'''
 from datetime import datetime
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, FormView
@@ -11,6 +14,9 @@ from front.models import Message, Newsletter
 BASE_TEMPLATE = 'pages/back/{page}.html'
 
 class LoginRequired(LoginRequiredMixin):
+    '''
+    Login required mixin
+    '''
     login_url = '/login'
     redirect_field_name = 'redirect_to'
 
@@ -117,11 +123,12 @@ class ProfilePageView(LoginRequired, FormView):
         return context
 
     def post(self, request, *args, **kwargs):
-        form = ProfilForm(request.POST, request.FILES, instance=User.objects.get(id=self.request.user.id))
+        form = ProfilForm(request.POST, request.FILES,
+        instance=User.objects.get(id=self.request.user.id))
         if form.is_valid():
             form.save()
             return self.form_valid(form)
-        
+
         context = self.form_invalid(form)
         return context
 
