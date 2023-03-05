@@ -36,7 +36,8 @@ class Base(Configuration):
         'captcha',
         'tailwind',
         'theme',
-        'django_browser_reload'
+        'django_browser_reload',
+        'admin_honeypot'
     ]
 
     INSTALLED_APPS = [*DEFAULT_APPS, *CREATED_APPS, *THIRD_PARTY_APPS]
