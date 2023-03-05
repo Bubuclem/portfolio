@@ -43,6 +43,7 @@ function SetTracking(){
     var script = document.createElement('script');
 
     if(GetAgreement() != true){
+        script.setAttribute('data-respect-dnt', '');
         script.setAttribute('data-no-cookie', '');
     }
 
