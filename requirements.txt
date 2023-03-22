@@ -5,5 +5,5 @@ django-tailwind==3.5.0
 django-browser-reload==1.6.0
 django-configurations==2.4
 django-resized==1.0.1
-Pillow==9.3.0
+Pillow==9.4.0
 git+https://github.com/Bubuclem/django-admin-honeypot@develop#egg=django-admin-honeypot
