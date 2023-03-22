@@ -1,6 +1,12 @@
+'''
+Configuration for Github
+'''
 from portfolio.settings import Base
 
 class Github(Base):
+    '''
+    Configuration for Github
+    '''
     DEBUG = True
 
     ALLOWED_HOSTS = ['localhost', 'github.dev', '127.0.0.1']

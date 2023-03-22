@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolio.github')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolio.configurations.github')
     os.environ.setdefault('DJANGO_CONFIGURATION', 'Github')
     try:
         from configurations.management import execute_from_command_line

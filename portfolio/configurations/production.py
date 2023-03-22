@@ -1,8 +1,14 @@
-import environ
+'''
+Configuration for the production environment.
+'''
 import os
+import environ
 from portfolio.settings import Base
 
 class Production(Base):
+    '''
+    The production environment settings.
+    '''
     env = environ.Env()
     # Take environment variables from .env file
     environ.Env.read_env(os.path.join(Base.BASE_DIR, '.env'))
@@ -14,7 +20,7 @@ class Production(Base):
     SECRET_KEY = env('SECRET_KEY')
 
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = True
+    DEBUG = False
 
     ALLOWED_HOSTS = ['*']
     INTERNAL_IPS = ALLOWED_HOSTS
