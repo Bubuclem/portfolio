@@ -2,7 +2,7 @@ Django==4.2.2
 django-environ==0.10.0
 django-recaptcha==3.0.0
 django-tailwind==3.5.0
-django-browser-reload==1.8.0
+django-browser-reload==1.9.0
 django-configurations==2.4.1
 django-resized==1.0.2
 Pillow==9.5.0
