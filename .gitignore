@@ -1,10 +1,12 @@
 __pycache__/
 *.py[cod]
 
-/.vscode
 /db.sqlite3
+
 /images
 /static
-/venv
 /users
+
 .env
+
+Pipfile*
