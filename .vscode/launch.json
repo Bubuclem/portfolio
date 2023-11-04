@@ -1,0 +1,42 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Django - dev",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "runserver",
+                "--settings=portfolio.configurations.development",
+                "--configuration=Development"
+            ],
+            "django": true,
+            "justMyCode": true,
+            "preLaunchTask": "prepserverdev",
+            "env": {
+                "DJANGO_CONFIGURATION": "Development"
+            }
+        },
+        {
+            "name": "Django - prod",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "runserver",
+                "--settings=portfolio.configurations.production",
+                "--configuration=Production"
+            ],
+            "django": true,
+            "justMyCode": true,
+            "preLaunchTask": "prepserverprod",
+            "env": {
+                "DJANGO_CONFIGURATION": "Production"
+            }
+        }
+    ]
+}

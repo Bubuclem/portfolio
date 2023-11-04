@@ -1,0 +1,69 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "makemigrations-dev",
+            "type": "shell",
+            "command": "python manage.py makemigrations",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.development",
+                    "DJANGO_CONFIGURATION": "Development"
+                }
+            },
+        },
+        {
+            "label": "makemigrations-prod",
+            "type": "shell",
+            "command": "python manage.py makemigrations",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.production",
+                    "DJANGO_CONFIGURATION": "Production"
+                }
+            },
+        },
+        {
+            "label": "migrate-dev",
+            "type": "shell",
+            "command": "python manage.py migrate",
+            "group": "build",
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.development",
+                    "DJANGO_CONFIGURATION": "Development"
+                }
+            },
+        },
+        {
+            "label": "migrate-prod",
+            "type": "shell",
+            "command": "python manage.py migrate",
+            "group": "build",
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.production",
+                    "DJANGO_CONFIGURATION": "Production"
+                }
+            },
+        },
+        {
+            "label": "prepserverdev",
+            "dependsOn": ["makemigrations-dev", "migrate-dev"]
+        },
+        {
+            "label": "prepserverprod",
+            "dependsOn": ["makemigrations-prod", "migrate-dev"]
+        },
+    ]
+  }
