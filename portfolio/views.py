@@ -7,14 +7,10 @@ def handler404(request, exception):
     '''
     404 Error Handler
     '''
-    response = render(request, 'errors/error.html', {})
-    response.status_code = 404
-    return response
+    return render(request, 'errors/error.html')
 
 def handler500(request):
     '''
     500 Error Handler
     '''
-    response = render(request, 'errors/error.html', {})
-    response.status_code = 500
-    return response
+    return render(request, 'errors/error.html')
