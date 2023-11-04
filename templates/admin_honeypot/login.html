@@ -1,0 +1,19 @@
+{% extends 'admin_honeypot/login.html' %}
+
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="icon" href="{% static 'favicon.ico' %}">
+{{ form.media }}
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin_honeypot:index' %}">{{ site_header|default:_('Django administration') }}</a>
+</h1>
+{% endblock %}
+{% block footer %}
+<div id="footer"></div>
+<script src="{% static 'js/privacy.js' %}"></script>
+{% endblock %}
