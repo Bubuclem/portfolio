@@ -58,6 +58,42 @@
             },
         },
         {
+            "label": "collectstatic",
+            "type": "shell",
+            "command": "python manage.py collectstatic --noinput",
+            "group": "none",
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.development",
+                    "DJANGO_CONFIGURATION": "Development"
+                }
+            },
+        },
+        {
+            "label": "clearsessions",
+            "type": "shell",
+            "command": "python manage.py clearsessions",
+            "group": "none",
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.development",
+                    "DJANGO_CONFIGURATION": "Development"
+                }
+            },
+        },
+        {
+            "label": "help",
+            "type": "shell",
+            "command": "python manage.py",
+            "group": "none",
+            "options": {
+                "env": {
+                    "DJANGO_SETTINGS_MODULE": "portfolio.configurations.development",
+                    "DJANGO_CONFIGURATION": "Development"
+                }
+            },
+        },
+        {
             "label": "prepserverdev",
             "dependsOn": ["makemigrations-dev", "migrate-dev"]
         },
