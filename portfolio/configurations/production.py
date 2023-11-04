@@ -22,7 +22,7 @@ class Production(Base):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = False
 
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = []
     INTERNAL_IPS = ALLOWED_HOSTS
     # Django reCAPTCHA
     # https://github.com/torchbox/django-recaptcha
