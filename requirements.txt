@@ -1,4 +1,4 @@
-Django==5.0
+Django==5.0.1
 django-environ==0.11.2
 django-recaptcha==4.0.0
 django-tailwind==3.8.0
