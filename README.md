@@ -5,3 +5,8 @@
 Django website for very simple portfolio.
 
 ![Capture](doc/images/Capture_web.jpeg)
+
+## Run dev
+```bash
+python manage.py runserver --settings=portfolio.configurations.development --configuration=Development
+```
