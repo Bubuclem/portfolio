@@ -26,14 +26,14 @@ class Base(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-    ]
+    ] 
 
     CREATED_APPS = [
         'profil',
     ]
 
     THIRD_PARTY_APPS = [
-        'captcha',
+        'django_recaptcha',
         'tailwind',
         'theme',
         'django_browser_reload',
