@@ -33,4 +33,4 @@ jobs:
 
     - name: Run Tests
       run: |
-        pipenv run manage.py test --settings=portfolio.configurations.github --configuration=Github
+        pipenv run python manage.py test --settings=portfolio.configurations.github --configuration=Github
