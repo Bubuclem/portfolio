@@ -10,7 +10,7 @@ django-recaptcha = "==4.0.0"
 django-tailwind = "*"
 django-browser-reload = "==1.16.0"
 django-configurations = "==2.5"
-django-resized = "==1.0.2"
+django-resized = "==1.0.3"
 pillow = "==10.4.0"
 django-admin-honeypot = {ref = "develop", git = "git+https://github.com/Bubuclem/django-admin-honeypot"}
 
