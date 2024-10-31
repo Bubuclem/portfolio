@@ -2,7 +2,7 @@
 asgiref==3.8.1; python_version >= '3.8'
 django==5.1.2; python_version >= '3.10'
 django-admin-honeypot@ git+https://github.com/Bubuclem/django-admin-honeypot@c8b140a9c340eb9d08b6d45d00121949c0ac322d
-django-browser-reload==1.16.0; python_version >= '3.8'
+django-browser-reload==1.17.0; python_version >= '3.8'
 django-configurations==2.5; python_version >= '3.8' and python_version < '4.0'
 django-environ==0.11.2; python_version >= '3.6' and python_version < '4'
 django-ipware==7.0.1; python_version >= '3.8'
