@@ -11,7 +11,7 @@ django-tailwind = "*"
 django-browser-reload = "==1.17.0"
 django-configurations = "==2.5"
 django-resized = "==1.0.3"
-pillow = "==11.0.0"
+pillow = "==11.1.0"
 django-admin-honeypot = {ref = "develop", git = "git+https://github.com/Bubuclem/django-admin-honeypot"}
 
 [dev-packages]
